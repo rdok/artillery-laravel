@@ -1,5 +1,8 @@
-### Plan
+## Plan
 
+### Completed
+
+#### Store File
 - Given I am an authenticated user with basic auth
 - When I a make a request to upload a file
 - Then I see a successful response

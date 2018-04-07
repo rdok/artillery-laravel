@@ -19,7 +19,7 @@ class StoreFileTest extends TestCase
 
         $this
             ->actingAs(factory(User::class)->create())
-            ->post('api/files', ['name' => $filename, 'file' => $file])
+            ->postJson('api/files', ['name' => $filename, 'file' => $file])
             ->assertStatus(200);
 
         $file = File::query()->first();
@@ -30,6 +30,7 @@ class StoreFileTest extends TestCase
         $this->assertFileExists($file->path);
 
         unlink($file->path);
+        $this->assertFileNotExists($file->path);
     }
 
     // assert is unique
@@ -39,7 +40,22 @@ class StoreFileTest extends TestCase
     {
         $file = UploadedFile::fake()->create($filename = 'filename', 1024);
 
-        $this->post('api/files', ['name' => $filename, 'file' => $file])
+        $this->postJson('api/files', ['name' => $filename, 'file' => $file])
             ->assertStatus(401);
+    }
+
+    /** @test */
+    public function a_loggedin_user_can_only_submit_file_type_format_when_storing_a_file()
+    {
+        $response = $this
+            ->actingAs(factory(User::class)->create())
+            ->postJson('api/files', ['name' => 'filenameValue', 'file' => []])
+            ->assertStatus(422);
+
+        $response->assertJsonValidationErrors('file');
+
+        $errors = $response->json()['errors'];
+
+        $this->assertEquals(['file' => ['The file field is required.']], $errors);
     }
 }

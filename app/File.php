@@ -17,6 +17,7 @@ class File extends Model
         /** @var \Illuminate\Http\Testing\File $uploadedFile */
         $uploadedFile = $data['file'];
 
+//        throw new \Exception(json_encode($data));
         $contents = file_get_contents($uploadedFile->getRealPath());
 
         $storageDirectory = storage_path(self::STORE_PATH);

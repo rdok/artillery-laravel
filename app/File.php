@@ -19,7 +19,11 @@ class File extends Model
 
         $contents = file_get_contents($uploadedFile->getRealPath());
 
-        mkdir(storage_path(self::STORE_PATH));
+        $storageDirectory = storage_path(self::STORE_PATH);
+
+        if ( ! file_exists($storageDirectory)) {
+            mkdir($storageDirectory);
+        }
 
         file_put_contents($file->path, $contents);
 

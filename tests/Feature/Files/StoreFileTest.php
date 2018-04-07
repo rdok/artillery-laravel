@@ -3,6 +3,7 @@
 namespace Tests\Feature\Files;
 
 use App\File;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -16,7 +17,9 @@ class StoreFileTest extends TestCase
     {
         $file = UploadedFile::fake()->create($filename = 'filename', 1024);
 
-        $this->post('api/files', ['name' => $filename, 'file' => $file])
+        $this
+            ->actingAs(factory(User::class)->create())
+            ->post('api/files', ['name' => $filename, 'file' => $file])
             ->assertStatus(200);
 
         $file = File::query()->first();
@@ -30,4 +33,13 @@ class StoreFileTest extends TestCase
     }
 
     // assert is unique
+
+    /** @test */
+    public function a_guest_is_unable_to_store_a_file()
+    {
+        $file = UploadedFile::fake()->create($filename = 'filename', 1024);
+
+        $this->post('api/files', ['name' => $filename, 'file' => $file])
+            ->assertStatus(401);
+    }
 }

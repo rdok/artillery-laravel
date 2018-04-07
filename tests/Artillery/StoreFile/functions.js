@@ -34,7 +34,6 @@ function generateRandomFile(requestParams, context, ee, next) {
 
         let fullPath = __dirname + "/" + parameter.path;
 
-        console.log(fullPath);
         this.update(fs.createReadStream(fullPath));
     });
 

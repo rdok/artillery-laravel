@@ -1,9 +1,13 @@
 config:
   target: "http://artillerylaravel/api"
   phases:
-    - duration: 1
-      arrivalRate: 1
-      name: "Basic test"
+    - duration: 15
+      arrivalRate: 5
+    - duration: 30
+      arrivalRate: 5
+      rampTo: 50
+    - duration: 45
+      arrivalRate: 50
   http:
     tls:
       rejectUnauthorized: false
@@ -13,7 +17,7 @@ config:
 scenarios:
   - flow:
 #      - function: "generateRandomFile"
-      - log: "Storing new file..."
+#      - log: "Storing new file..."
       - post:
           url: "/files"
           beforeRequest: "generateRandomFile"

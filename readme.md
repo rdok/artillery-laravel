@@ -1,12 +1,12 @@
-## Plan
+> See tests/Artillery/StoreFile/store_files.yml
 
-### Completed
+### Prepare artillery
+- php artisan migrate
+- npm install -g artillery  
+- npm install faker
+- npm install traverse
 
-#### Store File
+#### Scenario - Store File
 - Given I am an authenticated user with basic auth
 - When I a make a request to upload a file
 - Then I see a successful response
-- And I see the total number of resources having being increased by one
-
-
-### Resource - Store File

@@ -1,5 +1,3 @@
 <?php
 
-Route::group(['middleware' => 'auth.basic'], function () {
-    Route::resource('files', 'FileController', ['only' => 'store']);
-});
+Route::resource('files', 'FileController', ['only' => ['store', 'index']]);

@@ -1,0 +1,30 @@
+config:
+  target: "http://artillerylaravel/api"
+  phases:
+    - duration: 15
+      arrivalRate: 5
+    - duration: 30
+      arrivalRate: 5
+      rampTo: 50
+    - duration: 45
+      arrivalRate: 50
+  http:
+    tls:
+      rejectUnauthorized: false
+  processor: "./functions.js"
+#  files:
+#    - "@./file_to_upload.dat"
+scenarios:
+  - flow:
+#      - function: "generateRandomFile"
+#      - log: "Storing new file..."
+      - post:
+          url: "/files"
+          beforeRequest: "generateRandomFile"
+#          afterResponse: "logHeaders"
+          formData:
+            name: "FileNameValue"
+            file:
+              path: "file_to_upload.dat"
+          headers:
+            Authorization: "Basic dGVzdGVyOnNlY3JldA==" # tester/secret

@@ -1,0 +1,18 @@
+# Locally:
+# artillery run tests/Artillery/StoreFile/store_files.yml
+# Debug> DEBUG=http* artillery run tests/Artillery/StoreFile/store_files.yml
+config:
+  target: "{{NTLM_URL}}"
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  processor: "./../loadNtlm.js"
+scenarios:
+  - flow:
+      - post:
+          url: "/"
+          beforeRequest:
+            - "loadNtlmUrl"
+            - "loadNtlmAuth"
+          formData:
+            name: "FileNameValue"

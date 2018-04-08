@@ -1,8 +1,10 @@
 ### Scenarios covered
 #### Store File
-`DEBUG=http* artillery run tests/Artillery/StoreFile/store_files.yml`
+`artillery run tests/Artillery/StoreFile/storeFile.yml`
 #### Use environment variables
-`DEBUG=http* artillery run tests/Artillery/ReadEnv/read_env.yml`
+`artillery run tests/Artillery/ReadEnv/readEnv.yml`
+#### NTLM Auth
+`artillery run tests/Artillery/NtlmAuth/ntlm_auth.yml`
 
 ### Prepare server
 - `php vendor/bin/homestead make`
@@ -10,8 +12,10 @@
 - `vagrant up`
 - `vagrant ssh`
 - `cd ~/code; cp .env.example .env; composer install; php artisan key:generate; php artisan migrate`
+##### For NTLM authentication
+Add a url requiring ntlm authentication to the `URL_REQUIRING_NTLM_AUTH` environment variable in .env
 
 ### Prepare artillery
 > Testing machine
 - `sudo npm install -g artillery`
-- `npm install faker traverse dotenv` Must be run at your project's path.
+- `npm run artillerySetup`

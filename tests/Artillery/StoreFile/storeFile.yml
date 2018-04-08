@@ -12,11 +12,11 @@ scenarios:
       - post:
           url: "/files"
           beforeRequest:
-            - "loadEnv"
+            - "loadAppUrl"
             - "generateRandomFile"
           formData:
             name: "FileNameValue"
             file:
-              path: "file_to_upload.dat"
+              path: "fileToUpload.dat"
           headers:
             Authorization: "Basic dGVzdGVyOnNlY3JldA==" # tester/secret

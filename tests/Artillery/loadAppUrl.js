@@ -3,12 +3,12 @@
 // https://github.com/shoreditch-ops/artillery/issues/185
 //
 
-module.exports = {loadEnv: loadEnv};
+module.exports = {loadAppUrl: loadAppUrl};
 
 require('dotenv').config();
 const traverse = require('traverse');
 
-function loadEnv(requestParams, context, ee, next) {
+function loadAppUrl(requestParams, context, ee, next) {
 
     traverse(requestParams).forEach(function (parameter) {
 

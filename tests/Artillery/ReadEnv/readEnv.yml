@@ -6,9 +6,9 @@ config:
   phases:
     - duration: 1
       arrivalRate: 1
-  processor: "./functions.js"
+  processor: "./../loadAppUrl.js"
 scenarios:
   - flow:
       - get:
           url: "/files"
-          beforeRequest: "prepareEnvs"
+          beforeRequest: "loadAppUrl"

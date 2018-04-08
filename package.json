@@ -20,6 +20,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "faker": "^4.1.0"
+        "dotenv": "^5.0.1",
+        "faker": "^4.1.0",
+        "traverse": "^0.6.6"
     }
 }

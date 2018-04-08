@@ -4,16 +4,13 @@ namespace Tests\Feature\Files;
 
 use App\File;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
-class StoreFileTest extends TestCase
+class StoreFileTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-
     /** @test */
-    public function a_loggedin_user_may__store_a_file()
+    public function a_loggedin_user_may_store_a_file()
     {
         $file = UploadedFile::fake()->create($filename = 'filename', 1024);
 
@@ -45,7 +42,7 @@ class StoreFileTest extends TestCase
     }
 
     /** @test */
-    public function a_loggedin_user_can_only_submit_file_type_format_when_storing_a_file()
+    public function a_loggedin_user_is_unable_to_submit_an_invalid_file_type()
     {
         $response = $this
             ->actingAs(factory(User::class)->create())

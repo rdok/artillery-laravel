@@ -3,8 +3,7 @@
 ### Prepare artillery
 - php artisan migrate
 - npm install -g artillery  
-- npm install faker
-- npm install traverse
+- npm install faker traverse dotenv
 
 #### Scenario - Store File
 - Given I am an authenticated user with basic auth

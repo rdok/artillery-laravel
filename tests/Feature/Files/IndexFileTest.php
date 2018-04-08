@@ -7,14 +7,11 @@
 namespace Tests\Feature\Files;
 
 use App\File;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
-class IndexFileTest extends TestCase
+class IndexFileTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function a_guest_sees_files_pagination()
     {

@@ -3,7 +3,6 @@
 # Debug> DEBUG=http* artillery run tests/Artillery/ReadEnv/read_env.yml
 config:
   target: "{{APP_URL}}/api"
-#  target: "http://homestead.test/api"
   phases:
     - duration: 1
       arrivalRate: 1

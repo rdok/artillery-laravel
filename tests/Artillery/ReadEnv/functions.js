@@ -12,13 +12,13 @@ function prepareEnvs(requestParams, context, ee, next) {
 
     traverse(requestParams).forEach(function (parameter) {
 
-        if (!parameter) return;
-
-        if (!parameter.url) return;
+        if (!parameter || !parameter.url) return;
 
         let newUri = parameter.url.replace('{{APP_URL}}', process.env.APP_URL);
 
-        requestParams.uri = newUri
+        requestParams.uri = newUri;
+
+        this.stop();
     });
 
     return next();

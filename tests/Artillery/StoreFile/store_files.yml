@@ -1,5 +1,8 @@
+# Locally:
+# artillery run tests/Artillery/StoreFile/store_files.yml
+# Debug> DEBUG=http* artillery run tests/Artillery/StoreFile/store_files.yml
 config:
-  target: "http://artillerylaravel/api"
+  target: "{{APP_URL}}/api"
   phases:
     - duration: 1
       arrivalRate: 5
@@ -8,7 +11,9 @@ scenarios:
   - flow:
       - post:
           url: "/files"
-          beforeRequest: "generateRandomFile"
+          beforeRequest:
+            - "loadEnv"
+            - "generateRandomFile"
           formData:
             name: "FileNameValue"
             file:

@@ -4,7 +4,7 @@
 #### Use environment variables
 `artillery run tests/Artillery/ReadEnv/readEnv.yml`
 #### NTLM Auth
-`artillery run tests/Artillery/NtlmAuth/ntlm_auth.yml`
+`artillery run tests/Artillery/NtlmAuth/ntlmAuth.yml`
 
 ### Prepare server
 - `php vendor/bin/homestead make`
@@ -13,7 +13,7 @@
 - `vagrant ssh`
 - `cd ~/code; cp .env.example .env; composer install; php artisan key:generate; php artisan migrate`
 ##### For NTLM authentication
-Add a url requiring ntlm authentication to the `URL_REQUIRING_NTLM_AUTH` environment variable in .env
+Add a url requiring ntlm authentication to the `NTLM_URL` environment variable in .env
 
 ### Prepare artillery
 > Testing machine

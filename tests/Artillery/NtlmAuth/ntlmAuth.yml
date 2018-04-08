@@ -1,6 +1,6 @@
 # Locally:
-# artillery run tests/Artillery/StoreFile/store_files.yml
-# Debug> DEBUG=http* artillery run tests/Artillery/StoreFile/store_files.yml
+# artillery run tests/Artillery/NtlmAuth/ntlmAuth.yml
+# Debug> DEBUG=http* artillery run tests/Artillery/NtlmAuth/ntlmAuth.yml
 config:
   target: "{{NTLM_URL}}"
   phases:

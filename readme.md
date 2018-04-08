@@ -1,8 +1,16 @@
 > See tests/Artillery/StoreFile/store_files.yml
+### Prepare dev machine
+- php vendor/bin/homestead make
+ - Append to your hosts file: homestead.test
+- vagrant up
+- vagrant ssh
+- php ~/code/artisan key:generate
 
 ### Prepare artillery
-- php artisan migrate
-- npm install -g artillery  
+- vagrant ssh
+- cd ~/code
+- php migrate
+- sudo npm install -g artillery  
 - npm install faker traverse dotenv
 
 #### Scenario - Store File

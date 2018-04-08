@@ -1,14 +1,15 @@
+# Locally:
+# artillery run tests/Artillery/ReadEnv/read_env.yml
+# Debug> DEBUG=http* artillery run tests/Artillery/ReadEnv/read_env.yml
 config:
-  target: "http://artillerylaravel/api"
+  target: "{{APP_URL}}/api"
+#  target: "http://homestead.test/api"
   phases:
     - duration: 1
       arrivalRate: 1
-  http:
-    tls:
-      rejectUnauthorized: false
   processor: "./functions.js"
 scenarios:
   - flow:
       - get:
           url: "/files"
-          beforeRequest: "generateRandomFile"
+          beforeRequest: "prepareEnvs"

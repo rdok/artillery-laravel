@@ -5,9 +5,9 @@ namespace Tests\Feature\Files;
 use App\File;
 use App\User;
 use Illuminate\Http\UploadedFile;
-use Tests\Feature\FeatureTestCase;
+use Tests\TestCase;
 
-class StoreFileTest extends FeatureTestCase
+class StoreFileTest extends TestCase
 {
     /** @test */
     public function a_loggedin_user_may_store_a_file()

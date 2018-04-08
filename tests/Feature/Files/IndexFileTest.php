@@ -8,9 +8,9 @@ namespace Tests\Feature\Files;
 
 use App\File;
 use Illuminate\Support\Collection;
-use Tests\Feature\FeatureTestCase;
+use Tests\TestCase;
 
-class IndexFileTest extends FeatureTestCase
+class IndexFileTest extends TestCase
 {
     /** @test */
     public function a_guest_sees_files_pagination()
